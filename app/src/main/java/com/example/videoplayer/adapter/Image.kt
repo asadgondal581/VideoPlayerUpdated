@@ -1,0 +1,16 @@
+package info.hannes.scopeo
+
+import android.net.Uri
+import androidx.recyclerview.widget.DiffUtil
+import com.sun.jndi.toolkit.url.Uri
+import java.util.*
+
+data class Image(val id: Long, val displayName: String, val dateTaken: Date, val contentUri: Uri) {
+
+    companion object {
+        val diffCallback = object : DiffUtil.ItemCallback<Image>() {
+            override fun areItemsTheSame(oldItem: Image, newItem: Image) = oldItem.id == newItem.id
+            override fun areContentsTheSame(oldItem: Image, newItem: Image) = oldItem == newItem
+        }
+    }
+}
